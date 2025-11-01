@@ -397,8 +397,8 @@ export const AskAIViewer: React.FC = () => {
       // Wait a bit before adding to messages to avoid flickering
       await new Promise(resolve => setTimeout(resolve, 50));
       
-      // Add final message
-      setMessages(prev => [...prev, userMessage, { role: "assistant", content: result }]);
+      // Add final assistant message only (user message was already added above)
+      setMessages(prev => [...prev, { role: "assistant", content: result }]);
       setStreamedContent("");
     } catch (e) {
       setError('AI failed to respond. Please try again.');
